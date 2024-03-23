@@ -1,0 +1,20 @@
+﻿@model AssessmentGaleria.Models.Carro
+
+@{
+    ViewData["Title"] = "Detalhes do Carro";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <img src="@Model.Imagem" alt="@Model.Modelo" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Modelo</h5>
+                    <p class="card-text">@Model.Info</p>
+                    <a href="/" class="btn btn-secondary">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

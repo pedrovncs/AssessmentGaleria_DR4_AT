@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+
+
+@if (ViewBag.Carros == null || ViewBag.Carros.Count == 0)
+{
+    <div class="container text-center alert alert-danger" role="alert" >
+        <h2>Nenhum carro cadastrado para este fabricante.</h2>
+    </div>
+}
+else
+{
+    <div class="container text-center">
+        <div class="row">
+            <h1>@ViewBag.FabricanteNome</h1>
+            @await Html.PartialAsync("_Card")
+        </div>
+    </div>
+}
