@@ -1,10 +1,20 @@
 using AssessmentGaleria;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options => 
+{
+    options.LoginPath = "/Usuario/Login"; 
+    options.AccessDeniedPath = "/Usuario/AccessDenied";
+});
 
 builder.Services.AddDbContext<GaleriaDBContext>(c =>
 {
@@ -28,6 +38,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

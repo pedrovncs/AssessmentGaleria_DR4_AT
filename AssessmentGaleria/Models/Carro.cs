@@ -13,6 +13,7 @@ namespace AssessmentGaleria.Models
         public string Info { get; set; }
         [Required(ErrorMessage = "Campo de Ano é obrigatório")]
         public string Ano { get; set; }
+        [Required(ErrorMessage = "Campo de Imagem é obrigatório")]
         public String Imagem { get; set; }
     }
 }

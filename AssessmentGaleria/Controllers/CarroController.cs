@@ -1,11 +1,12 @@
 ﻿using AssessmentGaleria.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
 namespace AssessmentGaleria.Controllers
 {
-
+    [Authorize]
     public class CarroController : Controller
     {
         private readonly GaleriaDBContext _context;
@@ -77,6 +78,55 @@ namespace AssessmentGaleria.Controllers
             this._context.SaveChanges();
 
             return Redirect("/fabricante");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var carro = _context.Carros.FirstOrDefault(x => x.Id == id);
+
+            if (carro == null)
+                return NotFound();
+
+            return View(carro);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Carro carro)
+        {
+            if (id != carro.Id)
+                return NotFound();
+            
+            if (!ModelState.IsValid)
+                return View(carro);
+
+            _context.Update(carro);
+            _context.SaveChanges();
+
+            return Redirect("/Home/Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var carro = _context.Carros.FirstOrDefault(x => x.Id == id);
+
+            if (carro == null)
+                return NotFound();
+
+            return View(carro);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var carro = _context.Carros.FirstOrDefault(x => x.Id == id);
+
+            if (carro == null)
+                return NotFound();
+
+            _context.Carros.Remove(carro);
+            _context.SaveChanges();
+
+            return Redirect("/Home/Index");
         }
     }
 }

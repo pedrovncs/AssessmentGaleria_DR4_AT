@@ -3,6 +3,7 @@ using AssessmentGaleria;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssessmentGaleria.Migrations
 {
     [DbContext(typeof(GaleriaDBContext))]
-    partial class GaleriaDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240323144021_UsuarioTableAdded")]
+    partial class UsuarioTableAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

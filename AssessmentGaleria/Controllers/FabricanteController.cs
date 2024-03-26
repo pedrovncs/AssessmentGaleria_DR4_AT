@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AssessmentGaleria;
 using AssessmentGaleria.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AssessmentGaleria.Controllers
 {
+    [Authorize]
     public class FabricanteController : Controller
     {
         private readonly GaleriaDBContext _context;
